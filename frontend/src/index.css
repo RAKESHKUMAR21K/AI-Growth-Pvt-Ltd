@@ -1,0 +1,70 @@
+:root {
+  --bg: #020617;
+  --bg2: #050d1f;
+  --bg3: #0a1628;
+  --blue: #3b82f6;
+  --blue2: #60a5fa;
+  --purple: #8b5cf6;
+  --purple2: #a78bfa;
+  --cyan: #06b6d4;
+  --green: #10b981;
+  --pink: #ec4899;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --border: rgba(59,130,246,0.18);
+  --glass: rgba(15,30,60,0.55);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: 
+    linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none; z-index: 0;
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(59,130,246,0.4);
+  box-shadow: 0 0 40px rgba(59,130,246,0.25);
+}
+
+.badge-element {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.3);
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--blue2);
+  text-transform: uppercase;
+}
+
+@keyframes trackScrolling {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrap {
+  display: flex; gap: 60px; width: max-content;
+  animation: trackScrolling 25s linear infinite;
+}
